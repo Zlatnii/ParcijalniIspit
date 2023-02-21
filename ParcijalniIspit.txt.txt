@@ -1,3 +1,10 @@
+Instalacija Virtualnog stroja:
+
+Sa navedene stranice je link za preuzimanje virtualnog stroja:
+https://www.virtualbox.org/wiki/Downloads
+
+kojeg skinemo te ga instaliramo na određeni drive.
+
 Kreiranje virtualke:
 
 Otići na new(nova), te dodati naziv virtualke, nakon toga odabrati .iso datoteku.
