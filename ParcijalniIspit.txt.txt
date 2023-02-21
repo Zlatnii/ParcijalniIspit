@@ -1,0 +1,14 @@
+Kreiranje virtualke:
+
+Otići na new(nova), te dodati naziv virtualke, nakon toga odabrati .iso datoteku.
+Odabrati RAM memoriju (4gb), te procesor (2ghza).
+
+Nakon što je pokrenuta instalacija linux-a, odabrati jezik "engleski" te
+jezik tipkovnice "hrvatski". Nakon toga se radi par koraka dalje te 
+staviti (x) na ssh ključ, i tako zaključiti instalaciju linuxa. 
+
+Poslije svega otići na virtaul boxu u postavke->mreža i bridged adapter
+
+Te se u VS codeu ili putty-u spojiti na virtualni server, na kojem se preko 
+ssh ključa spajamo.
+
