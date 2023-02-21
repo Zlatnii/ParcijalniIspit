@@ -19,3 +19,62 @@ Poslije svega otići na virtaul boxu u postavke->mreža i bridged adapter
 Te se u VS codeu ili putty-u spojiti na virtualni server, na kojem se preko 
 ssh ključa spajamo.
 
+Instalacija apache servera:
+
+Prvi korak:
+sudo apt get-update
+Slijedeći:
+sudo apt install apache2
+
+Instalacija mysql-a:
+
+Prvi korak:
+sudo apt install mysql-server
+nakon toga uđemo u mysql:
+sudo mysql
+gdje mu dodamo password:
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
+Nakon slijedeće prijave dobijemo error, te se moramo prijaviti sa:
+sudo mysql -p , gdje nas traži šifru, te upišemo navedenu šifru (1234).
+
+Instalacija PHP-a:
+
+Unesemo: sudo apt install php libapache2-mod-php php-mysql
+
+te u navedenom direktoriju imamo datoteku php.ini
+sudo nano /etc/php/8.1/apache2/php.ini
+
+u kojoj možemo manipulirati sa podacima phpinfo();
+
+Instalacija composera:
+1. curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.phpcurl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+
+2. HASH=`curl -sS https://composer.github.io/installer.sig`
+
+3. php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+Postavljanje mape ParcijalnisIspit kao root:
+nakon što smo ju kreirali, dali smo dozvole pomoću sudo chown ivo:ivo ParcijalniIspit
+
+Kreira se html datoteka, index.html te se ode sudo nano /etc/apache2/sites-available/000-default.conf
+te tamo pronađemo
+/var/www/html/ParcijalniIspit(što dodamo na kraju)
+
+u našem folderu ParcijalniIspit dodamo datoteku .htaccess u kojoj postavimo Directory Index index.html, te zatim
+sudo etc/apache2/apache2.conf u dijelu <Directory /var/www/> All Override All </Directory>
+
+Unutar mape ParcijalniIspit, inicijalizramo GIT na način da upišemo u terminal: git init
+
+Nakon toga u GitHub-u kreiramo novi repozitorij, kojemo mu damo naziv, te ga povežemo sa lokalnim:
+git remote add origin git@github.com:User/ParcijalniIspit.git
+
+Nakon inicijalizacije odemo na packegist.org te odaberemo packegist koji ćemo instalirati, npr: composer require symfony/serializer
+
+U mapi ParcijalniIspit kreiramo mapu .gitignor, te u nju upišemo /vendor
+
+I na kraju kada smo napravili navedene izmejene, radimo slijedeće
+git add .
+git status -> ovime provjerimo koje su datoteke dodane u lokalni međuspremnik
+git commit -m "Moj prvi commit"
+git push
